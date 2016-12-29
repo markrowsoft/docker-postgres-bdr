@@ -23,7 +23,14 @@ if [[ -z ${1} ]]; then
   create_rundir
 
   set_resolvconf_perms
-
+  { echo; echo "shared_preload_libraries = 'bdr'";
+			echo "wal_level = 'logical'";
+			echo "track_commit_timestamp = on";
+			echo "max_wal_senders = 10";
+			echo "max_replication_slots = 10";
+			echo "max_worker_processes = 10";
+			echo "default_sequenceam = 'bdr'";
+		} >> "$PG_DATADIR"/postgresql.conf
   configure_postgresql
 
   echo "Starting PostgreSQL ${PG_VERSION}..."
