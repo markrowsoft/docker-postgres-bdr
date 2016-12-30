@@ -1,3 +1,32 @@
+# Quick-Start for BDR 
+
+Uses https://2ndquadrant.com/en/resources/bdr/ distribution of PostgreSQL.
+
+It also includes the features from this Docker build making it very easy to configure: https://hub.docker.com/r/sameersbn/postgresql/
+
+BDR Support Quick Start
+Create a database on each node, eg named bdrdemo. Then, connect to the
+database on the first node and run:
+
+CREATE EXTENSION IF NOT EXISTS btree_gist;
+CREATE EXTENSION IF NOT EXISTS bdr;
+
+SELECT bdr.bdr_group_create(
+local_node_name := 'node01',
+node_external_dsn := 'host=node01.host port=5432 dbname=bdrdemo'
+);
+Then, on all other nodes run:
+
+CREATE EXTENSION IF NOT EXISTS btree_gist;
+CREATE EXTENSION IF NOT EXISTS bdr;
+
+SELECT bdr.bdr_group_join(
+local_node_name := 'nodeXX',
+node_external_dsn := 'host=nodeXX.host port=5432 dbname=bdrdemo',
+join_using_dsn := 'host=node01.host port=5432 dbname=bdrdemo'
+);
+(Make sure to replace node names and hosts with appropriate values, node.host values should resolve to IP address).
+
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
