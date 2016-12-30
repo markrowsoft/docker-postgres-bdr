@@ -34,8 +34,8 @@ PostgreSQL is an object-relational database management system (ORDBMS) with an e
 If you find this image useful here's how you can help:
 
 - Send a pull request with your awesome features and bug fixes
-- Help users resolve their [issues](../../issues?q=is%3Aopen+is%3Aissue).
-- Support the development of this image with a [donation](http://www.damagehead.com/donate/)
+
+
 
 ## Issues
 
@@ -53,18 +53,16 @@ If the above recommendations do not help then [report your issue](../../issues/n
 
 ## Installation
 
-Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/markrowsoft/postgresql) and is the recommended method of installation.
-
-> **Note**: Builds are also available on [Quay.io](https://quay.io/repository/markrowsoft/postgresql)
+Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/markrowsoft/postgresql-bdr) and is the recommended method of installation.
 
 ```bash
-docker pull markrowsoft/postgresql:9.5-3
+docker pull markrowsoft/postgresql-bdr
 ```
 
 Alternatively you can build the image yourself.
 
 ```bash
-docker build -t markrowsoft/postgresql github.com/markrowsoft/docker-postgresql
+docker build -t markrowsoft/postgresql github.com/markrowsoft/docker-postgresql-bdr
 ```
 
 ## Quickstart
@@ -75,7 +73,7 @@ Start PostgreSQL using:
 docker run --name postgresql -itd --restart always \
   --publish 5432:5432 \
   --volume /srv/docker/postgresql:/var/lib/postgresql \
-  markrowsoft/postgresql:9.5-3
+  markrowsoft/postgresql-bdr:latest
 ```
 
 Login to the PostgreSQL server using:
