@@ -104,7 +104,7 @@ By default connections to the PostgreSQL server need to authenticated using a pa
 ```bash
 docker run --name postgresql -itd --restart always \
   --env 'PG_TRUST_LOCALNET=true' \
-  markrowsoft/postgresql-bdr:9.5-3
+  markrowsoft/postgresql-bdrlatest
 ```
 
 > **Note**
@@ -118,7 +118,7 @@ By default the `postgres` user is not assigned a password and as a result you ca
 ```bash
 docker run --name postgresql -itd --restart always \
   --env 'PG_PASSWORD=passw0rd' \
-  markrowsoft/postgresql-bdr:9.5-3
+  markrowsoft/postgresql-bdrlatest
 ```
 
 
@@ -134,7 +134,7 @@ A new PostgreSQL database user can be created by specifying the `DB_USER` and `D
 ```bash
 docker run --name postgresql -itd --restart always \
   --env 'DB_USER=dbuser' --env 'DB_PASS=dbuserpass' \
-  markrowsoft/postgresql-bdr:9.5-3
+  markrowsoft/postgresql-bdrlatest
 ```
 
 > **Notes**
@@ -151,19 +151,17 @@ A new PostgreSQL database can be created by specifying the `DB_NAME` variable wh
 ```bash
 docker run --name postgresql -itd --restart always \
   --env 'DB_NAME=dbname' \
-  markrowsoft/postgresql-bdr:9.5-3
+  markrowsoft/postgresql-bdrlatest
 ```
 
 By default databases are created by copying the standard system database named `template1`. You can specify a different template for your database using the `DB_TEMPLATE` parameter. Refer to [Template Databases](http://www.postgresql.org/docs/9.4/static/manage-ag-templatedbs.html) for further information.
 
 Additionally, more than one database can be created by specifying a comma separated list of database names in `DB_NAME`. For example, the following command creates two new databases named `dbname1` and `dbname2`.
 
-*This feature is only available in releases greater than `9.1-1`*
-
 ```bash
 docker run --name postgresql -itd --restart always \
   --env 'DB_NAME=dbname1,dbname2' \
-  markrowsoft/postgresql-bdr:9.5-3
+  markrowsoft/postgresql-bdrlatest
 ```
 
 ## Granting user access to a database
@@ -174,7 +172,7 @@ If the `DB_USER` and `DB_PASS` variables are specified along with the `DB_NAME` 
 docker run --name postgresql -itd --restart always \
   --env 'DB_USER=dbuser' --env 'DB_PASS=dbuserpass' \
   --env 'DB_NAME=dbname1,dbname2' \
-  markrowsoft/postgresql-bdr:9.5-3
+  markrowsoft/postgresql-bdrlatest
 ```
 
 In the above example `dbuser` with be granted access to both the `dbname1` and `dbname2` databases.
@@ -186,7 +184,7 @@ The image also packages the [postgres contrib module](http://www.postgresql.org/
 ```bash
 docker run --name postgresql -itd \
   --env 'DB_NAME=db1,db2' --env 'DB_EXTENSION=unaccent,pg_trgm' \
-  markrowsoft/postgresql-bdr:9.5-3
+  markrowsoft/postgresql-bdrlatest
 ```
 
 The above command enables the `unaccent` and `pg_trgm` modules on the databases listed in `DB_NAME`, namely `db1` and `db2`.
@@ -202,7 +200,7 @@ Similar to the creation of a database user, a new PostgreSQL replication user ca
 ```bash
 docker run --name postgresql -itd --restart always \
   --env 'REPLICATION_USER=repluser' --env 'REPLICATION_PASS=repluserpass' \
-  markrowsoft/postgresql-bdr:9.5-3
+  markrowsoft/postgresql-bdrlatest
 ```
 
 > **Notes**
@@ -224,7 +222,7 @@ Begin by creating the master node of our cluster:
 docker run --name postgresql-master -itd --restart always \
   --env 'DB_USER=dbuser' --env 'DB_PASS=dbuserpass' --env 'DB_NAME=dbname' \
   --env 'REPLICATION_USER=repluser' --env 'REPLICATION_PASS=repluserpass' \
-  markrowsoft/postgresql-bdr:9.5-3
+  markrowsoft/postgresql-bdrlatest
 ```
 
 Notice that no additional arguments are specified while starting the master node of the cluster.
@@ -349,7 +347,7 @@ To upgrade to newer releases:
   1. Download the updated Docker image:
 
   ```bash
-  docker pull markrowsoft/postgresql:9.5-3
+  docker pull markrowsoft/postgresqllatest
   ```
 
   2. Stop the currently running image:
