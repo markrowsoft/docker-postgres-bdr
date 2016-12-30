@@ -1,6 +1,6 @@
 PostgreSQL:
   restart: always
-  image: morpholessdocker/pgsql_bdr
+  image: markrowsoft/postgresql-bdr
   ports:
     - "5432:5432"
   environment:
