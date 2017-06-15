@@ -91,7 +91,7 @@ docker pull markrowsoft/postgresql-bdr
 Alternatively you can build the image yourself.
 
 ```bash
-docker build -t markrowsoft/postgresql github.com/markrowsoft/docker-postgresql-bdr
+docker build -t markrowsoft/postgresql github.com/markrowsoft/docker-postgres-bdr
 ```
 
 ## Quickstart
